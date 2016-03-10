@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/tvXaxis"
+
+        android:layout_above="@+id/tvYaxis"
+        android:layout_alignLeft="@+id/tvYaxis"
+        android:layout_alignStart="@+id/tvYaxis"
+        android:layout_marginBottom="57dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/tvYaxis"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="106dp"
+        android:layout_marginStart="106dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/tvZaxis"
+        android:layout_below="@+id/tvYaxis"
+        android:layout_alignLeft="@+id/tvYaxis"
+        android:layout_alignStart="@+id/tvYaxis"
+        android:layout_marginTop="47dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start  game  1"
+        android:id="@+id/bStartGame1"
+        android:layout_above="@+id/tvXaxis"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="44dp"
+        android:layout_marginEnd="44dp"
+        android:textColor="#366bff" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start  game  2"
+        android:id="@+id/bStartGame2"
+        android:textColor="#366bff"
+        android:layout_above="@+id/tvYaxis"
+        android:layout_alignLeft="@+id/bStartGame1"
+        android:layout_alignStart="@+id/bStartGame1" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start  game  3"
+        android:id="@+id/bStartGame3"
+        android:textColor="#366bff"
+        android:layout_alignBottom="@+id/tvZaxis"
+        android:layout_alignLeft="@+id/bStartGame2"
+        android:layout_alignStart="@+id/bStartGame2" />
+
+
+</RelativeLayout>

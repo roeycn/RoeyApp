@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+<LinearLayout android:layout_height="match_parent"
+    android:layout_width="310dp"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <LinearLayout android:layout_height="wrap_content"
+        android:layout_width="325dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+
+
+
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="203dp"
+        android:layout_height="30dp"
+        android:text="List of countries "
+        android:textSize="20dp"
+        android:textColor="#ff312c"
+        android:layout_weight="0.04" />
+
+    <Button
+        android:layout_width="95dp"
+        android:layout_height="33dp"
+        android:text="Check it !"
+        android:id="@+id/button"
+        android:background="#eeff34"
+        android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="303dp"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#00000000"
+        android:divider="#ff312c">
+
+    </ListView>
+
+</LinearLayout>
+
+
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        >
+        <WebView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/wvBrowser"
+            android:layout_gravity="center_vertical" />
+            />
+        <TextView
+            android:layout_width="287dp"
+            android:layout_height="match_parent"
+            android:id="@+id/ivLoading"
+            android:background="#dfff5c"
+            android:text="Connect you to Wikipedia..."
+            android:textColor="#ff9a6f"
+            android:textSize="32dp" />
+            />
+
+        <TextView
+            android:layout_width="287dp"
+            android:layout_height="match_parent"
+            android:id="@+id/ivStart"
+            android:background="#96fcff"
+            android:text="Hello !!!  , select acountry from the list"
+            android:textColor="#ff9a6f"
+            android:textSize="48dp" />
+        />
+    </FrameLayout>
+
+
+
+
+
+</LinearLayout>
