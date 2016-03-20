@@ -5,15 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.example.roey.roeyapp.GraphicsView
+        android:id="@+id/snake"
+        android:layout_width="487dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/layout_border"
+         />
 
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_width="109dp"
+        android:layout_height="294dp"
+        android:layout_gravity="right|center_vertical">
 
         <TextView
             android:id="@+id/text"
-            android:text="snake"
+            android:text="Options"
             android:visibility="visible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,17 +34,80 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="38dp"
-            android:layout_marginEnd="38dp"
-            android:layout_marginTop="24dp" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-        <com.example.roey.roeyapp.GraphicsView
-            android:id="@+id/snake"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            />
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Color"
+            android:id="@+id/bColorSelect"
+            android:layout_below="@+id/text"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:background="#ff1a24"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RANDOM"
+            android:id="@+id/bRANDOM"
+            android:background="#fffee9"
+            android:layout_below="@+id/bColorSelect"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clean"
+            android:id="@+id/bCLEAN"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="#56331922" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ibSave"
+            android:src="@drawable/save3"
+            android:layout_below="@+id/bRANDOM"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/etSavedName"
+            android:layout_below="@+id/ibSave"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ibSendMail"
+            android:src="@drawable/email"
+            android:layout_above="@+id/etSavedName"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/ibSave"
+            android:layout_toRightOf="@+id/ibSave"
+            android:layout_toEndOf="@+id/ibSave" />
+
+
     </RelativeLayout>
-
 
 
 </FrameLayout>

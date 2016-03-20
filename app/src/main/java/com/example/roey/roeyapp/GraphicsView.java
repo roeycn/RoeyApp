@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -17,29 +18,40 @@ public class GraphicsView extends View implements View.OnTouchListener {
     int x = 0;
     int y = 0;
     int r = 255;
-    int g = 255;
-    int b = 255;
+    int g = 0;
+    int b = 0;
     int radius = 50;
-    Paint paint;
+    Paint selectedPaint;
     MediaPlayer player = new MediaPlayer();
+
+    boolean drawEnabled = false;
+
+
 
     private static final String TAG = "Screen1";
     int counter = 0;
-    Paint paint2;
+    Paint paintText;
+
+    // select random colors
+    int random = 0;
+    // clean the canvas
+    int clean = 0;
 
 
     public GraphicsView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        paint = new Paint();
-        paint.setAntiAlias(true);
-        paint.setARGB(150, r, g, b);
+        selectedPaint = new Paint();
+        selectedPaint.setAntiAlias(true);
+        selectedPaint.setARGB(150, r, g, b);
         setFocusable(true);
         this.setOnTouchListener(this);
 
-        paint2 = new Paint();
-        paint2.setColor(Color.BLACK);
-        paint2.setStyle(Paint.Style.FILL);
-        paint2.setTextSize(150);
+
+
+        paintText = new Paint();
+        paintText.setColor(Color.BLACK);
+        paintText.setStyle(Paint.Style.FILL);
+        paintText.setTextSize(80);
 
 
         try {
@@ -58,10 +70,10 @@ public class GraphicsView extends View implements View.OnTouchListener {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        //   if(drawEverything) {
-        int screenWidth = canvas.getWidth();
-        int screenHeight = canvas.getHeight();
-        // Option 1 - > using array of int
+        if (drawEnabled) {
+            int screenWidth = canvas.getWidth();
+            int screenHeight = canvas.getHeight();
+            // Option 1 - > using array of int
             /*
             int[] currentCircle = new int[]{r, g, b, x, y, radius};
             circles.add(currentCircle);
@@ -71,7 +83,7 @@ public class GraphicsView extends View implements View.OnTouchListener {
             }
             */
 
-        // Option 2 -> same thing just more clear
+            // Option 2 -> same thing just more clear
             /*
             for(int i =0; i<circles.size();i++ ){
                 int[] circle = circles.get(i);
@@ -80,28 +92,40 @@ public class GraphicsView extends View implements View.OnTouchListener {
             }
             */
 
-        // Option 3 -> same thing using Circle class
-        Circle currentCircle = new Circle(r, g, b, x, y, radius);
-        circlesArray.add(currentCircle);
-        counter++;
-        Log.v(TAG, "r=" + r + "  g=" + g + "  b=" + b + "  x=" + x + "  y=" + y + "  radius=" + radius + "  number of drawn circels till far: " + counter);
+            // Option 3 -> same thing using Circle class
+            Circle currentCircle = new Circle(r, g, b, x, y, radius);
+            circlesArray.add(currentCircle);
+            counter++;
+            Log.v(TAG, "r=" + r + "  g=" + g + "  b=" + b + "  x=" + x + "  y=" + y + "  radius=" + radius + "  number of drawn circels till far: " + counter);
 
 
-        for (Circle circle : circlesArray) {
-            circle.drawCircle(canvas);
+            for (Circle circle : circlesArray) {
+                circle.drawCircle(canvas);
 
+            }
+
+            canvas.drawText("Total Circles:  " + counter, 0, screenHeight, paintText);
+
+
+            //   }else{
+            //       canvas.drawColor(0, PorterDuff.Mode.CLEAR);
+            //   }
+
+
+            // clear the canvas Canvas.drawColor(Color.BLACK)
+        }else {
+  //          Toast toast = Toast.makeText(getContext(),"please select a color", Toast.LENGTH_SHORT );
+  //          toast.show();
         }
 
-        canvas.drawText("Total Circles:  " + counter, 0, screenHeight, paint2);
+        if (clean != 0) {
+            // clear the canvas
+            canvas.drawColor(Color.WHITE);
+            circlesArray.clear();
+            counter = 1;
+        }
 
-        //   }else{
-        //       canvas.drawColor(0, PorterDuff.Mode.CLEAR);
-        //   }
-
-
-        // clear the canvas Canvas.drawColor(Color.BLACK)
     }
-
 
     private class Circle {
         int r, g, b, x, y, radius;
@@ -116,8 +140,8 @@ public class GraphicsView extends View implements View.OnTouchListener {
         }
 
         public void drawCircle(Canvas canvas) {
-            paint.setARGB(150, r, g, b);
-            canvas.drawCircle(x, y, radius, paint);
+            selectedPaint.setARGB(150, r, g, b);
+            canvas.drawCircle(x, y, radius, selectedPaint);
         }
     }
 
@@ -133,29 +157,35 @@ public class GraphicsView extends View implements View.OnTouchListener {
 */
         x = (int) event.getX();
         y = (int) event.getY();
-        r = (int) (Math.random() * 255);
-        g = (int) (Math.random() * 255);
-        b = (int) (Math.random() * 255);
+
+        if (random == 1) {
+               r = (int) (Math.random() * 255);
+               g = (int) (Math.random() * 255);
+               b = (int) (Math.random() * 255);
+        }
         invalidate();
 
-
-        switch (event.getAction()) {
-
-            case MotionEvent.ACTION_DOWN:
-                player.setLooping(true);
-                player.start();
+        if (drawEnabled) {
+            switch (event.getAction()) {
 
 
-            case MotionEvent.ACTION_MOVE:
+                case MotionEvent.ACTION_DOWN:
+
+                    player.setLooping(true);
+                    player.start();
 
 
-                break;
+                case MotionEvent.ACTION_MOVE:
 
-            case MotionEvent.ACTION_UP:
-                player.pause();
-                break;
+
+                    break;
+
+                case MotionEvent.ACTION_UP:
+                    player.pause();
+                    break;
+
+            }
         }
-
 
         return true;
 

@@ -22,10 +22,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton iButton2 ;
     ImageButton iButton3 ;
     ImageButton iButton4 ;
+    ImageButton iButton5 ;
     Animation animRotate ;
     Animation animFadeout;
     Animation zoomOut;
     Animation bounce;
+    Animation translate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         iButton4 = (ImageButton) findViewById(R.id.imageButton4) ;
         iButton4.setOnClickListener(this);
 
+        iButton5 = (ImageButton) findViewById(R.id.imageButton5) ;
+        iButton5.setOnClickListener(this);
+
 
 
 
@@ -52,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         animFadeout = AnimationUtils.loadAnimation(this , R.anim.abc_fade_out);
         zoomOut = AnimationUtils.loadAnimation(this , R.anim.zoom_out);
         bounce = AnimationUtils.loadAnimation(this ,R.anim.anim_bounce);
+        translate = AnimationUtils.loadAnimation(this ,R.anim.anim_translate);
 
 
 
@@ -147,6 +153,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 };
                 timer4.start();
+
+
+                break;
+
+
+            case R.id.imageButton5:
+                v.startAnimation(translate);
+
+
+                Thread timer5 = new Thread() {
+                    public void run(){
+                        try {
+                            sleep(700);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }finally {
+                            Intent openMainActivity = new Intent("com.example.roey.roeyapp.SCREEN5");
+                            startActivity(openMainActivity);
+                        }
+                    }
+                };
+                timer5.start();
 
 
                 break;
