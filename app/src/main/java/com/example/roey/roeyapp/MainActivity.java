@@ -16,6 +16,9 @@ import android.widget.ImageButton;
  * Main screen after splash screens ,
  * each button contain an animation , and timer that waits till the animation ends and then going to the next activity.
  *
+ *
+ * project seems to be good at home laptop
+ *
  */
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
