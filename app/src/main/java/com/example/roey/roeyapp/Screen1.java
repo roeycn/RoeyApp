@@ -1,6 +1,7 @@
 package com.example.roey.roeyapp;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -38,17 +40,14 @@ public class Screen1 extends Activity implements View.OnClickListener {
     ImageButton bSendMail;
     boolean canW , canR ;
 
-
-
     public static String filename = "MySharedString";
-    EditText sharedData;
+    //EditText sharedData;
     File path = null;
 
     public static Screen1 mInstance = null;
-
-
-
     private String state;
+
+    final Context context = this;
 
 
     @Override
@@ -68,7 +67,7 @@ public class Screen1 extends Activity implements View.OnClickListener {
         bClean = (Button) findViewById(R.id.bCLEAN);
         bSave = (ImageButton) findViewById(R.id.ibSave);
         bSendMail = (ImageButton) findViewById(R.id.ibSendMail);
-        sharedData = (EditText) findViewById(R.id.etSavedName);
+   //     sharedData = (EditText) findViewById(R.id.etSavedName);
 
         bColorSelect.setOnClickListener(this);
         bRandom.setOnClickListener(this);
@@ -79,6 +78,7 @@ public class Screen1 extends Activity implements View.OnClickListener {
         checkState();
 
         mInstance = this;
+
 
 
 
@@ -183,15 +183,40 @@ public class Screen1 extends Activity implements View.OnClickListener {
 
                 if (canW == canR == true ) {
 
-                  // graphics.invalidate();
+                    // we will go to popupsave activity and display it as dialog.
 
-                    Intent i =  new Intent("com.example.roey.roeyapp.POPUPSAVEDSCREEN1") ;
+                    Intent i = new Intent("com.example.roey.roeyapp.POPUPSAVEDSCREEN1");
                     startActivity(i);
 
+                }
+
+                    // another way to display dialog:
+                    /*
+                    graphics.invalidate();
+                    // create a Dialog component
+                    final Dialog dialog = new Dialog(context);
+                    Button bDismiss = (Button) dialog.findViewById(R.id.dismiss);
+                    Button bSave = (Button)dialog.findViewById(R.id.bsave);
+                    //tell the Dialog to use the dialog.xml as it's layout description
+                    dialog.setContentView(R.layout.popupsavescreen1);
+                    dialog.setTitle("Android Custom Dialog Box");
+                    bDismiss.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+                    bSave.setOnClickListener(new View.OnClickListener(){
+                        @Override
+                        public void onClick(View v) {
+                            saveImage();
+                        }
+                    });
+                    dialog.show();
+                }
+                */
 
                  //   saveImage();
-
-               }
                 break;
 
             case R.id.ibSendMail:
@@ -244,7 +269,7 @@ public class Screen1 extends Activity implements View.OnClickListener {
         }
     }
 
-
+/*
     public void saveImage() {
         path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         String f = sharedData.getText().toString();
@@ -287,6 +312,9 @@ public class Screen1 extends Activity implements View.OnClickListener {
             e.printStackTrace();
         }
     }
+
+    */
+    
 }
 
 

@@ -7,6 +7,9 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE">
+
+    </uses-permission>
 
 
 
@@ -158,6 +161,19 @@
             </intent-filter>
         </activity>
 
+        <receiver android:name="MyBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.example.roey.roeyapp.A_CUSTOM_INTENT">
+                </action>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".IncomingCall"
+                  android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+        </receiver>
 
 
 

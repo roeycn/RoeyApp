@@ -1,6 +1,8 @@
 package com.example.roey.roeyapp;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -63,6 +65,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    @Override
+    protected void onResume(){
+    super.onResume();
+
+        ComponentName component=new ComponentName(this, IncomingCall.class);
+        getPackageManager()
+                .setComponentEnabledSetting(component,
+                        PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                        PackageManager.DONT_KILL_APP);
+    }
+
+    @Override
+    public void onPause(){
+    super.onPause();
+
+        ComponentName component=new ComponentName(this, IncomingCall.class);
+        getPackageManager()
+                .setComponentEnabledSetting(component,
+                        PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                        PackageManager.DONT_KILL_APP);
+    }
 
 
     @Override
@@ -197,7 +220,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -222,5 +244,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+
+
+
 }
+
+
 

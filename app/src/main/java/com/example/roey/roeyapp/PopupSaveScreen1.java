@@ -2,12 +2,18 @@ package com.example.roey.roeyapp;
 
 
 import android.app.Activity;
+import android.app.Service;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.SystemClock;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -39,9 +45,10 @@ public class PopupSaveScreen1 extends Activity implements View.OnClickListener {
         bSave = (Button)findViewById(R.id.bsave);
         fileName = (EditText) findViewById(R.id.etFileName);
 
-        fileName.setOnClickListener(this);
+    //    fileName.setOnClickListener(this);
         bDismiss.setOnClickListener(this);
         bSave.setOnClickListener(this);
+
 
 
 
@@ -51,17 +58,20 @@ public class PopupSaveScreen1 extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
 
-            case R.id.dismiss:
+            case R.id.etFileName:
 
+        //        fileName.requestFocus();
+          //      InputMethodManager imm = (InputMethodManager)this.getSystemService(Service.INPUT_METHOD_SERVICE);
+           //     imm.showSoftInput(fileName, InputMethodManager.SHOW_IMPLICIT);
+
+             ///   fileName.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_DOWN, 0, 0, 0));
+             //   fileName.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_UP, 0, 0, 0));
+                break;
+
+            case R.id.dismiss:
 
                 finish();
                 break;
-
-      //      case R.id.etFileName:
-
-
-
-//                break;
 
 
             case R.id.bsave:
@@ -114,12 +124,7 @@ public class PopupSaveScreen1 extends Activity implements View.OnClickListener {
             saveOk = true ;
 
              finish();
-
-
-
         }
-
-
     }
 
 
