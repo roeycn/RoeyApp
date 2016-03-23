@@ -12,7 +12,7 @@ public class IncomingCall extends BroadcastReceiver
 {
 
     Context mContext;
-    String number;
+    String number = null;
     public static IncomingCall mInstance = null;
 
 
@@ -60,6 +60,7 @@ public class IncomingCall extends BroadcastReceiver
 
                 Toast.makeText(mContext, "Phone Is Idle", Toast.LENGTH_LONG).show();
                 // Your Code
+
 
             }
         }

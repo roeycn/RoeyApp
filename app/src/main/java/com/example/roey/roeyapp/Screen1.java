@@ -221,44 +221,48 @@ public class Screen1 extends Activity implements View.OnClickListener {
 
             case R.id.ibSendMail:
 
-/*
+
                 graphics.invalidate();
                 path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
                 graphics.setDrawingCacheEnabled(true);
                 graphics.buildDrawingCache();
                 Bitmap bitmap = graphics.getDrawingCache();
 
-
-                Intent data = new Intent();
-                int columnIndex;
-                String  attachmentFile;
-
-                Uri URI = null;
-                Uri selectedImage = data.getData();
-                String[] filePathColumn = { MediaStore.Images.Media.DATA };
-                Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
-                cursor.moveToFirst();
-                columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                attachmentFile = cursor.getString(columnIndex);
-                Log.e("Attachment Path:", attachmentFile);
-                URI = Uri.parse("file://" + attachmentFile);
-                cursor.close();
-
-
-
-                String pathofBmp = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,"title", null);
-*/
-
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
                 emailIntent.setType("message/rfc822");
                 emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"roeyc@fourieredu.com"});
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Roey App - my draw");
                 emailIntent.putExtra(Intent.EXTRA_TEXT   , "Take a look at what that i have painted");
-             //   emailIntent.putExtra(Intent.EXTRA_STREAM, bitmap);
-              //  emailIntent.putExtra(Intent.EXTRA_STREAM, URI);
+
+
+                //create bitmap from the view
+               // graphics.invalidate();
+              //  graphics.layout(0, 0, graphics.getMeasuredWidth(), graphics.getMeasuredHeight());
+              //  Bitmap bitmap = Bitmap.createBitmap(graphics.getMeasuredWidth(), graphics.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+
+
+/*
+                final float densityMultiplier = context.getResources().getDisplayMetrics().density;
+                int h= (int) (100*densityMultiplier);
+                int w= (int) (h * bitmap.getWidth()/((double) bitmap.getHeight()));
+                bitmap=Bitmap.createScaledBitmap(bitmap, w, h, true);
+*/
+                String path = MediaStore.Images.Media.insertImage(getContentResolver(),bitmap,"title", null);
+                Uri screenshotUri = Uri.parse(path);
+
+
+                //send the bitmap
+                try {
+                    emailIntent.putExtra(Intent.EXTRA_STREAM, screenshotUri);
+
+                }catch (Exception e){
+                    Toast.makeText(Screen1.this, "file to attach cannot be found", Toast.LENGTH_SHORT).show();
+                }
+
+                emailIntent.setType("image/png");
 
                 try {
-                    startActivity(Intent.createChooser( emailIntent, "Send mail..."));
+                    startActivity(Intent.createChooser(emailIntent, "Send mail..."));
                 } catch (android.content.ActivityNotFoundException ex) {
                     Toast.makeText(Screen1.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
                 }
@@ -314,7 +318,7 @@ public class Screen1 extends Activity implements View.OnClickListener {
     }
 
     */
-    
+
 }
 
 

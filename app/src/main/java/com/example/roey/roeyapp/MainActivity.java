@@ -16,10 +16,31 @@ import android.widget.ImageButton;
  * Main screen after splash screens ,
  * each button contain an animation , and timer that waits till the animation ends and then going to the next activity.
  *
+ * Screen1- PAINT - custom view inside layout . paint circelrs via array of circels.
+ *                  save - via external storage - images will add to folder inside the phone gallery .
+ *                         save dialog appear ( diffrenet activity (manifest set for dialog) that has xml.
+ *                  send via mail - set the view as bitmap , attach it to the mail and send it.
+ *
+ * Screen2 - COUNTER - counter example.
+ *
+ * Screen3 - Selecting from the list view - will open the proper wikipedia page for it via webview.
+ *           - when the user clicks first it check for internet connection - if there is not connection - it will notify the user about it.
+ *
+ * Screen4 - ACCELEROMETER SENSOR   - first screen display the x y z values live.
+ *                                    the other buttons - games to be implemnted .
+ *
+ * Screen5 - BroadcastReceiver example \ incoming call class with text view and button.
+ *           + at the main screen - when call is arriving it will notify with toast about it and will open
+ *           Screen 5 activity , it will take the incoming call number and set it as textview.
+ *
+ *
+ *
+ *
  *
  * project seems to be good at home laptop
  *
  */
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

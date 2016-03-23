@@ -15,6 +15,7 @@ public class Screen5 extends Activity implements View.OnClickListener {
 
     Button btnStartBroadcast;
     TextView text;
+    String number = null ;
 
 
     @Override
@@ -25,8 +26,13 @@ public class Screen5 extends Activity implements View.OnClickListener {
         btnStartBroadcast = (Button)findViewById(R.id.btnStartBroadcast) ;
         btnStartBroadcast.setOnClickListener(this);
 
+        // without this appcrash occurs. -Attempt to read on a null object reference by incomingcall activity
+    try {
+    number = IncomingCall.mInstance.number;
+    }catch (Exception e){
 
-        String number = IncomingCall.mInstance.number;
+    }
+
 
 
         text = (TextView) findViewById(R.id.tvNumber);
