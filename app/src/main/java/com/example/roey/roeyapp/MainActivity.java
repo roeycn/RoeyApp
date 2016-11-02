@@ -41,7 +41,7 @@ import android.widget.ImageButton;
  *
  */
 
-// commit 02.11.2016
+// commit 02.11.2016 -2
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
